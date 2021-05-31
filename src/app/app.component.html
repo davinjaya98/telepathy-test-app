@@ -1,0 +1,35 @@
+<div class="template-fullscreen">
+  <div class="container-fluid h-100">
+    <div class="row h-100">
+      <div class="col-12 col-md-3 border-bottom border-end left-side">
+        <div class="sidebar">
+          <button type="button" class="btn btn-primary m-4" (click)="flushBoxes()">Reset All</button>
+        </div>
+      </div><!-- sidebar -->
+      <div class="col-12 col-md-9 right-side">
+        <div class="row">
+          <div #counterWrapper class="col-12">
+            <div class="d-flex justify-content-between justify-content-md-end py-3">
+              <div class="text-center counter">
+                <h4>Cumulative number of squares created: {{boxes.length}}</h4>
+              </div><!-- counter -->
+            </div>
+          </div><!-- col-12 -->
+          <div class="col-12 g-0 border-top">
+            <div class="dynamic-box-wrapper">
+              <div class="loading-overlay" [ngClass]="{'show': isLoading}">
+                <div class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div><!-- loading-overlay -->
+              <div id="infiniteScrolling" #infiniteScrolling class="dynamic-box">
+                <div class="box" *ngFor="let box of boxes" [ngStyle]="{'background-color': box}"
+                  (click)="toggleClicked($event)"></div>
+              </div><!-- dynamic-box -->
+            </div><!-- dynamic-box-wrapper -->
+          </div><!-- #infiniteScrolling -->
+        </div><!-- row -->
+      </div><!-- right-area -->
+    </div><!-- row -->
+  </div>
+</div>
